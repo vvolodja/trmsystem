@@ -1,0 +1,62 @@
+
+.autoriz-input{
+    margin-bottom: 5px!important;
+    text-align: center;
+}
+.margin-top-5{
+    margin-top: 5%!important;
+}
+.margin-top-20{
+    margin-top: 20%!important;
+}
+.margin-top-20px{
+    margin-top: 20px!important;
+}
+.margin-right-10px{
+    margin-right: 10px;
+}
+.margin-left-10px{
+    margin-left: 10px;
+}
+.margin-bottom-10px{
+    margin-bottom: 10px;
+}
+.margin0{
+    margin: 0px!important;
+}
+.created{
+    /*margin-top: 20px!important;*/
+    /*margin-right: 20px!important;*/
+    /*margin-bottom: 20px!important;*/
+    color: #337fba;
+}
+.description{
+    margin-top: 20px!important;
+    margin-right: 20px!important;
+    margin-bottom: 20px!important;
+    color: #2d6ba0;
+}
+
+.navbar-auto{
+    padding: 0px !important;
+}
+.list-members-border{
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid!important;
+    border-bottom-color: #d7d7d7 !important;
+}
+.list-members {
+    text-align: center;
+    color: #2d6ba0!important;
+    font-weight: 300;
+}
+
+.list-members:hover,
+.list-members:focus {
+    color: #630008!important;
+}
+
+.btn-w{
+    width: 100%!important;
+}
