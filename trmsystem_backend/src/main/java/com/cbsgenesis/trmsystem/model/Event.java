@@ -17,6 +17,10 @@ public class Event extends NamedEntity {
     @Column(name = "event_date")
     private Date date;
 
+    @ManyToOne
+    @JoinColumn(name = "event_type_id")
+    private EventType eventType;
+
     @ManyToMany
     @JoinTable(name = "event_workplaces", joinColumns = {@JoinColumn(name = "event_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "workplace_id", referencedColumnName = "id")})
