@@ -1,9 +1,9 @@
 package com.cbsgenesis.trmsystem.dao.jpa;
 
 import com.cbsgenesis.trmsystem.dao.TeamDAO;
-import com.cbsgenesis.trmsystem.model.Role;
 import com.cbsgenesis.trmsystem.model.Team;
 import org.apache.log4j.Logger;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -14,13 +14,14 @@ import java.util.UUID;
 /**
  * Created by ANTON on 27.02.2017.
  */
+
+@Repository
 public class JpaTeamDAOImpl implements TeamDAO {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     private final static Logger logger = Logger.getLogger(JpaTeamDAOImpl.class);
-
 
     @Override
     public void save(Team team) {
