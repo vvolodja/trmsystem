@@ -6,14 +6,18 @@ import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.Collection;
 import java.util.UUID;
 
 /**
- * Created by NoteBook on 01.03.2017.
+ * JPA implementation of {@link SpecialistDAO} interface.
+ *
+ * @author Dmitriy Saltykov
  */
+
 
 @Repository
 public class JpaSpecialistDAOImpl implements SpecialistDAO {
@@ -23,6 +27,12 @@ public class JpaSpecialistDAOImpl implements SpecialistDAO {
 
     private final static Logger logger = Logger.getLogger(JpaSpecialistDAOImpl.class);
 
+
+    /**
+     *
+     * @param specialist
+     *
+     */
     @Override
     public void save(Specialist specialist) {
         if (specialist.getId() == null) {
@@ -34,6 +44,11 @@ public class JpaSpecialistDAOImpl implements SpecialistDAO {
         }
     }
 
+    /**
+     *
+     * @param id specialist
+     * @return
+     */
     @Override
     public Specialist getById(UUID id) {
         Query query = this.entityManager.createQuery(
@@ -47,6 +62,10 @@ public class JpaSpecialistDAOImpl implements SpecialistDAO {
         return specialist;
     }
 
+    /**
+     *
+     * @return
+     */
     @Override
     public Collection<Specialist> getAll() {
         Collection<Specialist> result;
@@ -60,14 +79,34 @@ public class JpaSpecialistDAOImpl implements SpecialistDAO {
         return result;
     }
 
+    /**
+     *
+     * @param specialist
+     */
     @Override
     public void delete(Specialist specialist) {
         this.entityManager.remove(specialist);
-        logger.info("Specialist successfully remove. Specialist details: "+ specialist);
+        logger.info("Specialist successfully remove. Specialist details: " + specialist);
     }
 
+    /**
+     * 
+     * @param lastName
+     * @return
+     */
     @Override
-    public Specialist findByName(String name) {
-        return null;
+    public Specialist findByName(String lastName) {
+        try {
+            Query query = this.entityManager.createQuery(
+                    "SELECT DISTINCT specialist FROM  Specialist specialist LEFT JOIN FETCH specialist.user " +
+                            "WHERE specialist.lastName=:name", Specialist.class);
+            query.setParameter("name", lastName);
+            Specialist specialist = (Specialist) query.getSingleResult();
+            return specialist;
+
+        } catch (NoResultException e) {
+            return null;
+        }
     }
+
 }
