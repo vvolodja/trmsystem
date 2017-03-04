@@ -17,7 +17,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * Created by ANTON on 27.02.2017.
+ * Validation interface for class {@link Team}.
+ *
+ * @author Anton Lifyrenko
  */
 
 @Component

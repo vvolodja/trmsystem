@@ -1,6 +1,7 @@
 package com.cbsgenesis.trmsystem.dao.jpa;
 
 import com.cbsgenesis.trmsystem.dao.TeamDAO;
+import com.cbsgenesis.trmsystem.dao.UserDAO;
 import com.cbsgenesis.trmsystem.model.Team;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,9 @@ import java.util.Collection;
 import java.util.UUID;
 
 /**
- * Created by ANTON on 27.02.2017.
+ * Implementation of {@link TeamDAO} interface.
+ *
+ * @author Anton Lifyrenko
  */
 
 @Repository

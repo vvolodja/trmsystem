@@ -2,13 +2,16 @@ package com.cbsgenesis.trmsystem.service.impl;
 
 import com.cbsgenesis.trmsystem.model.Team;
 import com.cbsgenesis.trmsystem.service.TeamService;
+import com.cbsgenesis.trmsystem.service.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.UUID;
 
 /**
- * Created by ANTON on 27.02.2017.
+ * Implementation of {@link TeamService} interface
+ *
+ * @author Anton Lifyrenko
  */
 @Service
 public class TeamServiceImpl implements TeamService{

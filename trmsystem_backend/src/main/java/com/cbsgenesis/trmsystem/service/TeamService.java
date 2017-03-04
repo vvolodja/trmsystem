@@ -7,7 +7,9 @@ import java.util.Collection;
 import java.util.UUID;
 
 /**
- * Created by ANTON on 27.02.2017.
+ * Service class for class {@link Team}
+ *
+ * @author Anton Lifyrenko
  */
 public interface TeamService {
 
