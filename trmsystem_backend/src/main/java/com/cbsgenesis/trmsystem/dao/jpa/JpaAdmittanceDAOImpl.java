@@ -16,6 +16,7 @@ import java.util.UUID;
  * JPA implementation of {@link AdmittanceDAO} interface.
  *
  * @author Kyryl Potapenko
+ * @since 2017-03-03
  */
 @Repository
 public class JpaAdmittanceDAOImpl implements AdmittanceDAO {
@@ -25,6 +26,12 @@ public class JpaAdmittanceDAOImpl implements AdmittanceDAO {
 
     private final static Logger logger = Logger.getLogger(JpaAdmittanceDAOImpl.class);
 
+    /**
+     * Saves an entity of class {@link Admittance} in a relational database
+     *
+     * @param admittance an Admittance object
+     * @see Admittance
+     */
     @Override
     public void save(Admittance admittance) {
         if (admittance.getId() == null) {
@@ -36,6 +43,13 @@ public class JpaAdmittanceDAOImpl implements AdmittanceDAO {
         }
     }
 
+    /**
+     * This method is used to get an entity of class {@link Admittance} from the database
+     *
+     * @param id Specifies the unique id
+     * @return an Admittance object at the specified id
+     * @see Admittance
+     */
     @SuppressWarnings("unchecked")
     @Override
     public Admittance getById(UUID id) {
@@ -50,6 +64,11 @@ public class JpaAdmittanceDAOImpl implements AdmittanceDAO {
         return admittance;
     }
 
+    /**
+     * This method is used to get all objects of class {@link Admittance} from the database
+     *
+     * @return collection of Admittance objects
+     */
     @Override
     public Collection<Admittance> getAll() {
         Collection<Admittance> result;
@@ -62,12 +81,26 @@ public class JpaAdmittanceDAOImpl implements AdmittanceDAO {
         return result;
     }
 
+    /**
+     * Delete an entity of class {@link Admittance} from the database
+     *
+     * @param admittance an Admittance object
+     * @see Admittance
+     */
     @Override
     public void delete(Admittance admittance) {
         this.entityManager.remove(admittance);
         logger.info("Admittance successfully removed. Admittance details: " + admittance);
     }
 
+    /**
+     * This method is used to get an entity of class {@link Admittance}
+     *
+     * @param name Specifies the fild "name" of Admittance object
+     * @return an Admittance object at the specified name,
+     *         null when @exception NoResultException occurred
+     * @see Admittance
+     */
     @Override
     public Admittance findByName(String name) {
         try {
