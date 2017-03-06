@@ -7,12 +7,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import java.util.List;
 import java.util.UUID;
 
-import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.stubVoid;
 
 /**
  * Created by ANTON on 06.03.2017.
@@ -21,18 +19,18 @@ import static org.mockito.Mockito.when;
 @RunWith(MockitoJUnitRunner.class)
 public class JpaTeamDAOImplTestDelete {
     private JpaTeamDAOImpl jpaTeamDAOImpl;
-    List<Team> teams;
+    private Team team;
+    UUID id;
 
     @Before
     public void setUp(){
-        teams = mock(List.class);
+        team = mock(Team.class);
         jpaTeamDAOImpl = mock(JpaTeamDAOImpl.class);
     }
 
     @Test
     public void getByIdTest() throws Exception {
-        when(jpaTeamDAOImpl.getAll()).thenReturn(teams);
-        assertEquals(jpaTeamDAOImpl.getAll(), teams);
+        stubVoid(jpaTeamDAOImpl).toReturn().on().delete(team);
+        jpaTeamDAOImpl.delete(team);
     }
-
 }
