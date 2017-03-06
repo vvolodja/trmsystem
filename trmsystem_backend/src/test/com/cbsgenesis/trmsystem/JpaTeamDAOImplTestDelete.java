@@ -20,7 +20,6 @@ import static org.mockito.Mockito.stubVoid;
 public class JpaTeamDAOImplTestDelete {
     private JpaTeamDAOImpl jpaTeamDAOImpl;
     private Team team;
-    UUID id;
 
     @Before
     public void setUp(){
