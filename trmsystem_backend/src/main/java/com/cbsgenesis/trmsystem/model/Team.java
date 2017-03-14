@@ -16,7 +16,7 @@ public class Team extends NamedEntity {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "team")
     private Set<Specialist> specialists;
 
     @ManyToOne

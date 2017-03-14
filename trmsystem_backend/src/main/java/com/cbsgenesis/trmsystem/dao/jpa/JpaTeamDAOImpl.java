@@ -60,13 +60,12 @@ public class JpaTeamDAOImpl implements TeamDAO {
         for (Team team : result) {
             logger.info("Team list: " + team);
         }
-
         return result;
     }
 
     @Override
     public void delete(Team team) {
-        this.entityManager.remove(team);
+        entityManager.remove(entityManager.getReference(Team.class, team.getId()));
         logger.info("Team successfully removed. Team details: " + team);
     }
 

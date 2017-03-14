@@ -116,8 +116,8 @@
                 <td>${team.name}</td>
                 <td>${team.description}</td>
                 <td>${team.supervisor.username}</td>
-                <td><a href="<c:url value='/edit/${team.name}' />">Edit</a></td>
-                <td><a href="<c:url value='/remove/${team.name}' />">Delete</a></td>
+                <td><a href="<c:url value='/admin/team/edit/${team.id}' />">Edit</a></td>
+                <td><a href="<c:url value='/admin/team/remove/${team.id}'/>">Delete</a></td>
             </tr>
         </c:forEach>
     </table>

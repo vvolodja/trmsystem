@@ -48,7 +48,42 @@ public class TeamController {
          if (team != null){
             teamService.save(team);
         }
+        model.addAttribute("supervisors", userService.getAllSupervisors());
         model.addAttribute("teams", teamService.getAll());
+        return "/team/teams";
+    }
+
+    @RequestMapping(value = "/admin/team/remove/{id}", method = RequestMethod.GET)
+    public String removeTeam(@ModelAttribute("team") Team team, Model model) {
+
+        if (team != null){
+            teamService.delete(team);
+        }
+        model.addAttribute("team", new Team());
+        model.addAttribute("teams", teamService.getAll());
+        model.addAttribute("supervisors", userService.getAllSupervisors());
+        return "/team/teams";
+    }
+
+    @RequestMapping(value = "/admin/team/edit/{id}", method = RequestMethod.GET)
+    public String editTeam(@ModelAttribute("team") Team team, Model model) {
+
+        model.addAttribute("team", teamService.getById(team.getId()));
+        model.addAttribute("teams", teamService.getAll());
+        model.addAttribute("supervisors", userService.getAllSupervisors());
+
+        return "/team/editTeam";
+    }
+
+    @RequestMapping(value = "/admin/team/edit/{id}", method = RequestMethod.POST)
+    public String editSubmit(@ModelAttribute("team") Team team, Model model) {
+        if (team != null){
+            teamService.save(team);
+        }
+        model.addAttribute("team", new Team());
+        model.addAttribute("teams", teamService.getAll());
+        model.addAttribute("supervisors", userService.getAllSupervisors());
+
         return "/team/teams";
     }
 }
