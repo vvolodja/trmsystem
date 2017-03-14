@@ -20,7 +20,6 @@ public class UserRegistrationValidator extends UserValidator {
         return User.class.equals(aClass);
     }
 
-
     @Override
     public void validate(Object ob, Errors errors) {
         User user = (User) ob;
@@ -39,5 +38,4 @@ public class UserRegistrationValidator extends UserValidator {
 
         validateEmail(user, errors);
     }
-
 }

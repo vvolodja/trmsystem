@@ -1,9 +1,7 @@
 package com.cbsgenesis.trmsystem.validator;
 
 import com.cbsgenesis.trmsystem.model.Team;
-import com.cbsgenesis.trmsystem.model.User;
 import com.cbsgenesis.trmsystem.service.TeamService;
-import com.cbsgenesis.trmsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -40,7 +38,7 @@ public abstract class TeamValidator implements Validator {
 
     protected void validateTeamNameCoincidence(Team team, Errors errors) {
 
-        if (teamService.findByUserName(team.getName()) != null) {
+        if (teamService.findByTeamName(team.getName()) != null) {
             errors.rejectValue("teamName", "key.duplicate.teamForm.name");
         }
     }

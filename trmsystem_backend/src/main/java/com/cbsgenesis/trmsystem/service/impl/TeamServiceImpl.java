@@ -1,9 +1,13 @@
 package com.cbsgenesis.trmsystem.service.impl;
 
+import com.cbsgenesis.trmsystem.dao.TeamDAO;
+import com.cbsgenesis.trmsystem.dao.jpa.JpaTeamDAOImpl;
 import com.cbsgenesis.trmsystem.model.Team;
 import com.cbsgenesis.trmsystem.service.TeamService;
 import com.cbsgenesis.trmsystem.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.UUID;
@@ -15,28 +19,36 @@ import java.util.UUID;
  */
 @Service
 public class TeamServiceImpl implements TeamService{
-    @Override
-    public void save(Team team) {
 
+    @Autowired
+    private TeamDAO teamDAO;
+
+    @Override
+    @Transactional
+    public void save(Team team) {
+        teamDAO.save(team);
     }
 
     @Override
     public Team getById(UUID id) {
-        return null;
+        return teamDAO.getById(id);
     }
 
     @Override
-    public Team findByUserName(String teamName) {
-        return null;
+    @Transactional
+    public Team findByTeamName(String teamName) {
+        return teamDAO.findByName(teamName);
     }
 
     @Override
+    @Transactional
     public Collection<Team> getAll() {
-        return null;
+        return teamDAO.getAll();
     }
 
     @Override
+    @Transactional
     public void delete(Team team) {
-
+        teamDAO.delete(team);
     }
 }

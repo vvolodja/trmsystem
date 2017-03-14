@@ -3,10 +3,12 @@ package com.cbsgenesis.trmsystem.dao.jpa;
 import com.cbsgenesis.trmsystem.dao.TeamDAO;
 import com.cbsgenesis.trmsystem.dao.UserDAO;
 import com.cbsgenesis.trmsystem.model.Team;
+import com.cbsgenesis.trmsystem.model.User;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.Collection;
@@ -18,6 +20,7 @@ import java.util.UUID;
  * @author Anton Lifyrenko
  */
 
+@SuppressWarnings("JpaQlInspection")
 @Repository
 public class JpaTeamDAOImpl implements TeamDAO {
 
@@ -65,5 +68,21 @@ public class JpaTeamDAOImpl implements TeamDAO {
     public void delete(Team team) {
         this.entityManager.remove(team);
         logger.info("Team successfully removed. Team details: " + team);
+    }
+
+    @Override
+    public Team findByName(String teamName) {
+        Team team = null;
+        try {
+            Query query = this.entityManager.createQuery(
+                    "SELECT DISTINCT team FROM Team team " +
+                            "WHERE team.name= :name", Team.class);
+            query.setParameter("name", teamName);
+            team = (Team) query.getSingleResult();
+
+        } catch (NoResultException e) {
+            logger.error("Can't get team by teamName = '" + teamName + "'", e);
+        }
+        return team;
     }
 }

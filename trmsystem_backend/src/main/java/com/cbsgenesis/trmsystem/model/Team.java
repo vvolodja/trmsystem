@@ -23,6 +23,14 @@ public class Team extends NamedEntity {
     @JoinColumn(name = "supervisor_id")
     private User supervisor;
 
+    public User getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(User supervisor) {
+        this.supervisor = supervisor;
+    }
+
     public String getDescription() {
         return description;
     }
