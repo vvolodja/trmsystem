@@ -33,7 +33,6 @@ public class BaseController {
             modelAndView.addObject("user", user);
         }
         modelAndView.setViewName("welcome");
-
         return modelAndView;
     }
 

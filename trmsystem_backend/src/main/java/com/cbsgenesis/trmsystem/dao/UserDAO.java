@@ -2,6 +2,7 @@ package com.cbsgenesis.trmsystem.dao;
 
 import com.cbsgenesis.trmsystem.model.User;
 
+import java.util.Collection;
 import java.util.UUID;
 
 /**
@@ -12,4 +13,5 @@ import java.util.UUID;
 public interface UserDAO extends GenericDAO<User, UUID> {
 
     User findByName(String name);
+    Collection<User> getAllSupervisors();
 }

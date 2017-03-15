@@ -16,12 +16,20 @@ public class Team extends NamedEntity {
     @Column(name = "description")
     private String description;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "team")
     private Set<Specialist> specialists;
 
     @ManyToOne
     @JoinColumn(name = "supervisor_id")
     private User supervisor;
+
+    public User getSupervisor() {
+        return supervisor;
+    }
+
+    public void setSupervisor(User supervisor) {
+        this.supervisor = supervisor;
+    }
 
     public String getDescription() {
         return description;

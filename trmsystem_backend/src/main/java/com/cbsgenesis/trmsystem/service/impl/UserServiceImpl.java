@@ -64,6 +64,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     @Transactional
+    public Collection<User> getAllSupervisors() {
+        return userDao.getAllSupervisors();
+    }
+
+    @Override
+    @Transactional
     public void delete(User user) {
         this.userDao.delete(user);
     }
