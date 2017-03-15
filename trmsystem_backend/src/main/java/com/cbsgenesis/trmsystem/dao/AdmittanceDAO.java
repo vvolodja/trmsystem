@@ -11,4 +11,5 @@ import java.util.UUID;
  */
 
 public interface AdmittanceDAO extends GenericDAO<Admittance, UUID> {
+    Admittance findByName(String name);
 }
