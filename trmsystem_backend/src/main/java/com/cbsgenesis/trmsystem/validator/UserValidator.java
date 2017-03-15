@@ -34,7 +34,6 @@ public abstract class UserValidator implements Validator {
 
 
     protected void validateField(String field, Errors errors) {
-
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, field, "key.required");
     }
 
@@ -44,7 +43,6 @@ public abstract class UserValidator implements Validator {
             errors.rejectValue("username", "key.duplicate.userForm.username");
         }
     }
-
 
     protected void validateUsername(User user, Errors errors) {
 

@@ -21,6 +21,7 @@ import org.apache.log4j.Logger;
 
 @Repository
 public class JpaRoleDAOImpl implements RoleDAO {
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -50,7 +51,6 @@ public class JpaRoleDAOImpl implements RoleDAO {
             return null;
         }
     }
-
 
     @Override
     public Collection<Role> getAll() {
