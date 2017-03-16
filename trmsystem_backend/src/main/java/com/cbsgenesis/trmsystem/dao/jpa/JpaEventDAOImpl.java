@@ -10,11 +10,14 @@ import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 import java.util.Collection;
 import java.util.UUID;
+
 import org.apache.log4j.Logger;
 
 /**
  * Created by Orange on 04.03.2017.
  */
+
+@Repository
 public class JpaEventDAOImpl implements EventDAO {
 
     @PersistenceContext
@@ -24,7 +27,7 @@ public class JpaEventDAOImpl implements EventDAO {
 
     @Override
     public void save(Event event) {
-        if (event.getId() == null){
+        if (event.getId() == null) {
             this.entityManager.persist(event);
             logger.info("Event saccesfully saved. Event details:" + event);
         } else {
@@ -51,7 +54,7 @@ public class JpaEventDAOImpl implements EventDAO {
         Query query = this.entityManager.createQuery("SELECT event FROM Event event");
         result = query.getResultList();
 
-        for (Event event : result){
+        for (Event event : result) {
             logger.info("Event list:" + event);
         }
         return result;
@@ -71,6 +74,7 @@ public class JpaEventDAOImpl implements EventDAO {
             return event;
         } catch (NoResultException e) {
             logger.info("Cant find by name:" + e);
-        return null;
+            return null;
+        }
     }
-}}
+}
