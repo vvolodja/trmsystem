@@ -12,4 +12,5 @@ import java.util.UUID;
  */
 
 public interface EventDAO extends GenericDAO<Event, UUID> {
+    Event findByName(String name);
 }
