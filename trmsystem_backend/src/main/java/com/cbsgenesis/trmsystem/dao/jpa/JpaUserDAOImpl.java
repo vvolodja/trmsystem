@@ -73,6 +73,22 @@ public class JpaUserDAOImpl implements UserDAO {
     }
 
     @Override
+    public Collection<User> getAllSupervisors() {
+        Collection<User> result;
+        Query query = this.entityManager.
+                createQuery("SELECT DISTINCT user FROM User user " +
+                        "WHERE user.userType = :usertype ");
+        query.setParameter("usertype", "supervisor");
+        result = query.getResultList();
+
+        for (User user : result) {
+            logger.info("Supervisor list: " + user);
+        }
+
+        return result;
+    }
+
+    @Override
     public void save(User user) {
         user.setRegistrationDate(new Date());
         if (user.getId() == null) {

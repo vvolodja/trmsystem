@@ -11,4 +11,7 @@ import java.util.UUID;
  */
 
 public interface SpecialistDAO extends GenericDAO<Specialist, UUID> {
+
+    Specialist findByName(String lastName);
+
 }

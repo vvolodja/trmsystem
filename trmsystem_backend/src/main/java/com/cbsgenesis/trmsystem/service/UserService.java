@@ -21,6 +21,8 @@ public interface UserService {
 
     Collection<User> getAll();
 
+    Collection<User> getAllSupervisors();
+
     void delete(User team);
 
     boolean coincidencePassword(CharSequence rawPassword, String encodedPassword);

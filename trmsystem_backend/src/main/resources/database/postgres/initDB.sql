@@ -37,11 +37,13 @@ CREATE TABLE IF NOT EXISTS user_roles (
   UNIQUE (user_id, role_id)
 );
 
+-- statuses
 CREATE TABLE IF NOT EXISTS statuses (
   id   UUID        NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
   name VARCHAR(50) NOT NULL
 );
 
+-- teams
 CREATE TABLE IF NOT EXISTS teams (
   id            UUID          NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
   name          VARCHAR(50)   NOT NULL,
@@ -51,6 +53,7 @@ CREATE TABLE IF NOT EXISTS teams (
   FOREIGN KEY (supervisor_id) REFERENCES users (id)
 );
 
+-- specialists
 CREATE TABLE IF NOT EXISTS specialists (
   id               UUID         NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
   personnel_number INT          NOT NULL,
@@ -68,12 +71,14 @@ CREATE TABLE IF NOT EXISTS specialists (
   on update cascade
 );
 
+-- admittances
 CREATE TABLE IF NOT EXISTS admittances (
   id          UUID          NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
   name        VARCHAR(50)   NOT NULL,
   description VARCHAR(1000) NOT NULL
 );
 
+-- specialist_admittances
 CREATE TABLE IF NOT EXISTS specialist_admittances (
   specialist_id UUID NOT NULL,
   admittance_id UUID NOT NULL,
@@ -88,18 +93,31 @@ CREATE TABLE IF NOT EXISTS specialist_admittances (
   UNIQUE (specialist_id, admittance_id)
 );
 
-CREATE TABLE IF NOT EXISTS events (
-  id         UUID        NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
-  name       VARCHAR(50) NOT NULL,
-  event_date TIMESTAMP   NOT NULL
+-- event_types
+CREATE TABLE IF NOT EXISTS event_types (
+  id          UUID          NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name        VARCHAR(50)   NOT NULL,
+  description VARCHAR(1000) NOT NULL
 );
 
+-- events
+CREATE TABLE IF NOT EXISTS events (
+  id            UUID        NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
+  name          VARCHAR(50) NOT NULL,
+  event_date    TIMESTAMP   NOT NULL,
+  event_type_id UUID        NOT NULL,
+
+  FOREIGN KEY (event_type_id) REFERENCES event_types (id)
+);
+
+-- workplaces
 CREATE TABLE IF NOT EXISTS workplaces (
   id          UUID          NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
   name        VARCHAR(50)   NOT NULL,
   description VARCHAR(1000) NOT NULL
 );
 
+-- event_workplaces
 CREATE TABLE IF NOT EXISTS event_workplaces (
   event_id     UUID NOT NULL,
   workplace_id UUID NOT NULL,
@@ -110,6 +128,7 @@ CREATE TABLE IF NOT EXISTS event_workplaces (
   UNIQUE (event_id, workplace_id)
 );
 
+-- event_specialists
 CREATE TABLE IF NOT EXISTS event_specialists (
   event_id      UUID NOT NULL,
   specialist_id UUID NOT NULL,
@@ -124,11 +143,13 @@ CREATE TABLE IF NOT EXISTS event_specialists (
   UNIQUE (event_id, specialist_id)
 );
 
+-- specialties
 CREATE TABLE IF NOT EXISTS specialties (
   id   UUID        NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
   name VARCHAR(50) NOT NULL
 );
 
+-- specialist_specialties
 CREATE TABLE IF NOT EXISTS specialist_specialties (
   specialist_id UUID NOT NULL,
   specialty_id  UUID NOT NULL,

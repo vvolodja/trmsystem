@@ -17,7 +17,7 @@ public interface TeamService {
 
     Team getById(UUID id);
 
-    Team findByUserName(String teamName);
+    Team findByTeamName(String teamName);
 
     Collection<Team> getAll();
 

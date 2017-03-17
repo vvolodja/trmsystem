@@ -12,7 +12,7 @@ import java.util.Set;
  */
 
 @Entity
-@Table(name = "status")
+@Table(name = "statuses")
 public class Status extends NamedEntity {
 
     @OneToMany(mappedBy = "status")

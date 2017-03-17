@@ -32,6 +32,10 @@
         </h2>
 
     </c:if>
+
+    <a href="/admin">
+        <button>Go to admin operations</button>
+    </a>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 <script src="${contextPath}/resources/js/bootstrap.min.js"></script>

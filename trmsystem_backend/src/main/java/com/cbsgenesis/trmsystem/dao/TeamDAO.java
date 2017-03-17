@@ -11,4 +11,6 @@ import java.util.UUID;
  */
 
 public interface TeamDAO extends GenericDAO<Team, UUID> {
+
+    Team findByName(String name);
 }

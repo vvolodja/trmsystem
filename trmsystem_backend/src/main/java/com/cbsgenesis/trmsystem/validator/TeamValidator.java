@@ -44,7 +44,7 @@ public abstract class TeamValidator implements Validator {
      * Method validates field if there are duplications in DB
      */
     protected void validateTeamNameCoincidence(Team team, Errors errors) {
-        if (teamService.findByUserName(team.getName()) != null) {
+        if (teamService.findByTeamName(team.getName()) != null) {
             errors.rejectValue("teamName", "key.duplicate.teamForm.name");
         }
     }
@@ -54,6 +54,7 @@ public abstract class TeamValidator implements Validator {
      * Method validates field if the amount of symbols is appropriate
      */
     protected void validateTeamName(Team team, Errors errors) {
+
         validateField("teamName", errors);
         if (!checkTeamNameWithRegExp(team.getName(),
                 Integer.parseInt(env.getProperty("key.min.count.characters.teamName")),
