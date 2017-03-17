@@ -33,23 +33,28 @@ public abstract class TeamValidator implements Validator {
     @Autowired
     private Environment env;
 
-
+    /**
+     * Method validates field if it's empty and notifies user
+     */
     protected void validateField(String field, Errors errors) {
         ValidationUtils.rejectIfEmptyOrWhitespace(errors, field, "key.required");
     }
 
+    /**
+     * Method validates field if there are duplications in DB
+     */
     protected void validateTeamNameCoincidence(Team team, Errors errors) {
-
         if (teamService.findByUserName(team.getName()) != null) {
             errors.rejectValue("teamName", "key.duplicate.teamForm.name");
         }
     }
 
 
+    /**
+     * Method validates field if the amount of symbols is appropriate
+     */
     protected void validateTeamName(Team team, Errors errors) {
-
         validateField("teamName", errors);
-
         if (!checkTeamNameWithRegExp(team.getName(),
                 Integer.parseInt(env.getProperty("key.min.count.characters.teamName")),
                 Integer.parseInt(env.getProperty("key.max.count.characters.teamName")))) {
@@ -60,6 +65,9 @@ public abstract class TeamValidator implements Validator {
         }
     }
 
+    /**
+     * Method validates field if there are some restricted symbols
+     */
     private boolean checkTeamNameWithRegExp(String str, int... key) {
         Pattern p = Pattern.compile("^[a-zA-Z][a-zA-Z0-9-_.]{" + key[0] + "," + key[1] + "}$");
         Matcher m = p.matcher(str);

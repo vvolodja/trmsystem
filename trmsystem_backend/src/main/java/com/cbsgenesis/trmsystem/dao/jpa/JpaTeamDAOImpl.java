@@ -26,6 +26,9 @@ public class JpaTeamDAOImpl implements TeamDAO {
 
     private final static Logger logger = Logger.getLogger(JpaTeamDAOImpl.class);
 
+    /**
+     * Method receives parameter Team and save it in DB
+     */
     @Override
     public void save(Team team) {
         if (team.getId() == null) {
@@ -37,6 +40,9 @@ public class JpaTeamDAOImpl implements TeamDAO {
         }
     }
 
+    /**
+     * Method receives parameter UUID id, searching Team by id in DB and returns Team
+     */
     @Override
     public Team getById(UUID id) {
         Query query = this.entityManager.createQuery("SELECT DISTINCT team FROM Team team WHERE team.id = :id");
@@ -48,6 +54,9 @@ public class JpaTeamDAOImpl implements TeamDAO {
         return team;
     }
 
+    /**
+     * Method returns all Teams saved in DB
+     */
     @Override
     public Collection<Team> getAll() {
         Collection<Team> result;
@@ -61,6 +70,9 @@ public class JpaTeamDAOImpl implements TeamDAO {
         return result;
     }
 
+    /**
+     * Method removes Team from DB receiving as a parameter Team
+     */
     @Override
     public void delete(Team team) {
         this.entityManager.remove(team);

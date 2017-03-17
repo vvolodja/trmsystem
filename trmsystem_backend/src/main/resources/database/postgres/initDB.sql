@@ -13,6 +13,9 @@ CREATE TABLE IF NOT EXISTS users (
   birth_date        TIMESTAMP
 );
 
+create unique index uq_users on users (username);
+create unique index uq_users on users (email);
+
 -- roles
 CREATE TABLE IF NOT EXISTS roles (
   id   UUID        NOT NULL PRIMARY KEY DEFAULT uuid_generate_v4(),
@@ -24,8 +27,12 @@ CREATE TABLE IF NOT EXISTS user_roles (
   user_id UUID NOT NULL,
   role_id UUID NOT NULL,
 
-  FOREIGN KEY (user_id) REFERENCES users (id),
-  FOREIGN KEY (role_id) REFERENCES roles (id),
+  FOREIGN KEY (user_id) REFERENCES users (id)
+  on delete cascade
+  on update cascade,
+  FOREIGN KEY (role_id) REFERENCES roles (id)
+  on delete cascade
+  on update cascade,
 
   UNIQUE (user_id, role_id)
 );
@@ -53,8 +60,12 @@ CREATE TABLE IF NOT EXISTS specialists (
   status_id        UUID         NOT NULL,
   birth_date       TIMESTAMP,
 
-  FOREIGN KEY (team_id) REFERENCES teams (id),
+  FOREIGN KEY (team_id) REFERENCES teams (id)
+  on delete cascade
+  on update cascade,
   FOREIGN KEY (status_id) REFERENCES statuses (id)
+  on delete cascade
+  on update cascade
 );
 
 CREATE TABLE IF NOT EXISTS admittances (
@@ -67,8 +78,12 @@ CREATE TABLE IF NOT EXISTS specialist_admittances (
   specialist_id UUID NOT NULL,
   admittance_id UUID NOT NULL,
 
-  FOREIGN KEY (specialist_id) REFERENCES specialists (id),
-  FOREIGN KEY (admittance_id) REFERENCES admittances (id),
+  FOREIGN KEY (specialist_id) REFERENCES specialists (id)
+  on delete cascade
+  on update cascade,
+  FOREIGN KEY (admittance_id) REFERENCES admittances (id)
+  on delete cascade
+  on update cascade,
 
   UNIQUE (specialist_id, admittance_id)
 );
@@ -99,8 +114,12 @@ CREATE TABLE IF NOT EXISTS event_specialists (
   event_id      UUID NOT NULL,
   specialist_id UUID NOT NULL,
 
-  FOREIGN KEY (event_id) REFERENCES events (id),
-  FOREIGN KEY (specialist_id) REFERENCES specialists (id),
+  FOREIGN KEY (event_id) REFERENCES events (id)
+  on delete cascade
+  on update cascade,
+  FOREIGN KEY (specialist_id) REFERENCES specialists (id)
+  on delete cascade
+  on update cascade,
 
   UNIQUE (event_id, specialist_id)
 );
@@ -114,8 +133,11 @@ CREATE TABLE IF NOT EXISTS specialist_specialties (
   specialist_id UUID NOT NULL,
   specialty_id  UUID NOT NULL,
 
-  FOREIGN KEY (specialist_id) REFERENCES specialists (id),
-  FOREIGN KEY (specialty_id) REFERENCES specialties (id),
-
+  FOREIGN KEY (specialist_id) REFERENCES specialists (id)
+  on delete cascade
+  on update cascade,
+  FOREIGN KEY (specialty_id) REFERENCES specialties (id)
+  on delete cascade
+  on update cascade,
   UNIQUE (specialist_id, specialty_id)
 );
