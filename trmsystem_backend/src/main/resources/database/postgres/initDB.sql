@@ -13,8 +13,8 @@ CREATE TABLE IF NOT EXISTS users (
   birth_date        TIMESTAMP
 );
 
-create unique index uq_users on users (username);
-create unique index uq_users on users (email);
+create unique index uq_users_email on users (username);
+create unique index uq_users_username on users (email);
 
 -- roles
 CREATE TABLE IF NOT EXISTS roles (
