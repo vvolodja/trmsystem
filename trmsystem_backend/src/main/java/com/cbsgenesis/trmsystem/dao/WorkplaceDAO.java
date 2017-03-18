@@ -10,4 +10,5 @@ import java.util.UUID;
  * @author Eugene Suleimanov
  */
 public interface WorkplaceDAO extends GenericDAO<Workplace, UUID> {
+    Workplace findByName(String name);
 }
