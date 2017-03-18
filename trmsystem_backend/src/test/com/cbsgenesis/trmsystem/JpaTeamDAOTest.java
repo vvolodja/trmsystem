@@ -12,6 +12,7 @@ import java.util.UUID;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.stubVoid;
 import static org.mockito.Mockito.when;
 
 /**
@@ -19,19 +20,40 @@ import static org.mockito.Mockito.when;
  */
 
 @RunWith(MockitoJUnitRunner.class)
-public class JpaTeamDAOImplGetAll {
+public class JpaTeamDAOTest {
     private JpaTeamDAOImpl jpaTeamDAOImpl;
     private List<Team> teams;
+    private Team team;
+    UUID id;
 
     @Before
     public void setUp(){
         teams = mock(List.class);
         jpaTeamDAOImpl = mock(JpaTeamDAOImpl.class);
+        team = mock(Team.class);
+    }
+
+    @Test
+    public void getAllTeamsTest() throws Exception {
+        when(jpaTeamDAOImpl.getAll()).thenReturn(teams);
+        assertEquals(jpaTeamDAOImpl.getAll(), teams);
+    }
+
+    @Test
+    public void deleteTeamTest() throws Exception {
+        stubVoid(jpaTeamDAOImpl).toReturn().on().delete(team);
+        jpaTeamDAOImpl.delete(team);
     }
 
     @Test
     public void getByIdTest() throws Exception {
-        when(jpaTeamDAOImpl.getAll()).thenReturn(teams);
-        assertEquals(jpaTeamDAOImpl.getAll(), teams);
+        when(jpaTeamDAOImpl.getById(id)).thenReturn(team);
+        assertEquals(jpaTeamDAOImpl.getById(id), team);
+    }
+
+    @Test
+    public void saveTest() throws Exception{
+        stubVoid(jpaTeamDAOImpl).toReturn().on().save(team);
+        jpaTeamDAOImpl.save(team);
     }
 }
