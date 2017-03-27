@@ -4,11 +4,12 @@ import com.cbsgenesis.trmsystem.dao.AdmittanceDAO;
 import com.cbsgenesis.trmsystem.model.Admittance;
 import com.cbsgenesis.trmsystem.service.AdmittanceService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.UUID;
-
+@Service
 public class AdmittanceServiceImpl implements AdmittanceService {
     @Autowired
     private AdmittanceDAO admittanceDAO;
