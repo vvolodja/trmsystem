@@ -15,9 +15,9 @@
       <configuration>
         <fileset id="fileset" name="Spring Application Context" removed="false">
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring-config-data.xml</file>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring-config-root.xml</file>
-          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring-config-security.xml</file>
           <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/mvc-dispatcher-servlet.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring-config-security.xml</file>
+          <file>file://$MODULE_DIR$/src/main/webapp/WEB-INF/spring-config-root.xml</file>
         </fileset>
       </configuration>
     </facet>
@@ -31,7 +31,6 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: javax.validation:validation-api:1.1.0.Final" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-context:4.3.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-aop:4.3.4.RELEASE" level="project" />
     <orderEntry type="library" name="Maven: org.springframework:spring-beans:4.3.4.RELEASE" level="project" />
