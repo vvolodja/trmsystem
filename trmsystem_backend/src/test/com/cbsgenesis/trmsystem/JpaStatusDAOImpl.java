@@ -1,4 +1,4 @@
-package com.cbsgenesis.trmsystem.controller;
+package com.cbsgenesis.trmsystem;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -10,6 +10,9 @@ import static org.mockito.Mockito.stubVoid;
 
 import com.cbsgenesis.trmsystem.dao.jpa.JpaStatusDAOImpl;
 import com.cbsgenesis.trmsystem.model.Status;
+
+import java.util.List;
+import java.util.UUID;
 
 /**
  * Created by Alena on 23.03.2017.
