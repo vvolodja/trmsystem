@@ -17,7 +17,7 @@ import com.cbsgenesis.trmsystem.model.Status;
  */
 
 @RunWith(MockitoJUnitRunner.class)
-public class JpaStatusDAOImpl {
+public class JpaStatusDAOImplTest {
     private JpaStatusDAOImpl jpaStatusDAO;
     private Status status;
     private List<Status> statusList;
