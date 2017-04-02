@@ -1,14 +1,14 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
-<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
-<%@ page session="false" %>
 <%--
   Created by IntelliJ IDEA.
   User: Vasiliy Kylik
   Date: 31.03.2017
   Time: 1:20
 --%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
+<%@ taglib prefix="from" uri="http://www.springframework.org/tags/form" %>
+<%@ page session="false" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -42,5 +42,38 @@
 </table>
 </c:if>
 
+<h1>Add a Book</h1>
+
+<c:url var="addRole" value="/admin/roles/add"/>
+
+<form:form action="${addRole}" commandName="role">
+    <table>
+        <c:if test="${!empty role.name}">
+            <tr>
+                <td>
+                    <form:label path="id">
+                        <spring:message text="ID"/>
+                    </form:label>
+                </td>
+                <td>
+                    <form:input path="id" readonly="true" size="8" disabled="true"/>
+                    <form:hidden path="id"/>
+                </td>
+            </tr>
+        </c:if>
+        <tr>
+            <td colspan="2">
+                <c:if test="${!empty role.name}">
+                    <input type="submit"
+                           value="<spring:message text="Edit Role"/>"/>
+                </c:if>
+                <c:if test="${empty role.name}">
+                    <input type="submit"
+                           value="<spring:message text="Add Role"/>"/>
+                </c:if>
+            </td>
+        </tr>
+    </table>
+</form:form>
 </body>
 </html>

@@ -2,6 +2,7 @@ package com.cbsgenesis.trmsystem.controller;
 
 import com.cbsgenesis.trmsystem.model.Role;
 import com.cbsgenesis.trmsystem.service.RoleService;
+import com.sun.xml.internal.bind.v2.TODO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,4 +29,6 @@ public class AdminRoleController {
   public String welcome(Model model) {
     return "user/home";
   }
+
+  // TODO add mapping "/admin/roles/add" for role.jsp;
 }
