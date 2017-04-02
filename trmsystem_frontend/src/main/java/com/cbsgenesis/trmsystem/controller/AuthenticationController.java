@@ -4,6 +4,8 @@ import com.cbsgenesis.trmsystem.model.User;
 import com.cbsgenesis.trmsystem.service.SecurityService;
 import com.cbsgenesis.trmsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -51,6 +53,14 @@ public class AuthenticationController {
         userService.save(userForm);
 
         securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
+
+        if (SecurityContextHolder
+                .getContext()
+                .getAuthentication()
+                .getAuthorities()
+                .contains("ROLE_ADMIN")){
+            return "admin/welcome";
+        }
 
         return "user/home";
     }
