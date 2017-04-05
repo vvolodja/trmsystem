@@ -22,5 +22,9 @@
     <button>VIEW ADMITTANCES</button>
 </a>
 
+<a href="/admin/status">
+    <button>VIEW STATUS</button>
+</a>
+
 </body>
 </html>
