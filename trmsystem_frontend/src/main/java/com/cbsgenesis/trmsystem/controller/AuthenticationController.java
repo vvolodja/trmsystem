@@ -58,10 +58,9 @@ public class AuthenticationController {
                 .getContext()
                 .getAuthentication()
                 .getAuthorities()
-                .contains("ROLE_ADMIN")){
+                .contains("ROLE_ADMIN" )){
             return "admin/welcome";
         }
-
         return "user/home";
     }
 

@@ -15,7 +15,7 @@
     <title>Admin page for Roles</title>
 </head>
 <body>
-<a href="/welcome">Back Welcome page</a>
+<a href="admin/welcome">Back Welcome page</a>
 
 <br/>
 <br/>
@@ -35,8 +35,8 @@
     <tr>
         <td>${role.id}</td>
         <td>${role.name}</td>
-        <td><a href="<c:url value='/edit/${role.id}'/>">Edit</a></td>
-        <td><a href="<c:url value='/remove/${role.id}'/>">Delete</a></td>
+        <td><a href="<c:url value='admin/roles/edit/${role.id}'/>">Edit</a></td>
+        <td><a href="<c:url value='/admin/roles/remove/${role.id}'/>">Delete</a></td>
     </tr>
 </c:forEach>
 </table>
@@ -44,7 +44,7 @@
 
 <h1>Add a Book</h1>
 
-<c:url var="addRole" value="/admin/roles/add"/>
+<c:url var="addRole" value="/role/add"/>
 
 <form:form action="${addRole}" commandName="role">
     <table>
