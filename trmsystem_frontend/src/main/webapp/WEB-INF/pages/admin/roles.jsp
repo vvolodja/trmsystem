@@ -15,7 +15,7 @@
     <title>Admin page for Roles</title>
 </head>
 <body>
-<a href="admin/welcome">Back Welcome page</a>
+<a href="welcome">Back Welcome page</a>
 
 <br/>
 <br/>
@@ -42,7 +42,7 @@
 </table>
 </c:if>
 
-<h1>Add a Book</h1>
+<h1>Add a Role</h1>
 
 <c:url var="addRole" value="/role/add"/>
 

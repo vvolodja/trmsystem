@@ -41,10 +41,6 @@
 
     </c:if>
 
-    <a href="admin/welcome">
-        <button>Go to admin operations</button>
-    </a>
-
 </div>
 
 <div class="admin-panel">
