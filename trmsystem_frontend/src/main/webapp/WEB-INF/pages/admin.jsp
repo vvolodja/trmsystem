@@ -18,7 +18,7 @@
     <button>VIEW TEAMS</button>
 </a>
 
-<a href="/admin/roles">
+<a href="/admin/role/roles">
     <button>VIEW ROLES</button>
 </a>
 
