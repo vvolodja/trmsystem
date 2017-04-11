@@ -17,7 +17,8 @@ import java.util.UUID;
  * Created by Vasiliy Kylik on 31.03.2017.
  */
 @Controller
-public class RoleController {
+public class AdminCRUDRoleController {
+
   @Autowired
   private RoleService roleService;
 
