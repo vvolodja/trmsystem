@@ -24,7 +24,7 @@ public class AdminRoleController {
   public String listRoles(Model model){
     model.addAttribute("role", new Role());
     model.addAttribute("listRoles", this.roleService.getAll());
-    return "admin/roles";
+    return "role/roles";
   }
 
   @RequestMapping(value = {"/", "admin/welcome"}, method = RequestMethod.GET)
@@ -49,6 +49,6 @@ public class AdminRoleController {
   public String editBook(@PathVariable("id") UUID id, Model model) {
     model.addAttribute("role", this.roleService.getById(id));
     model.addAttribute("roles", this.roleService.getAll());
-    return "admin/roles";
+    return "role/roles";
   }
 }
