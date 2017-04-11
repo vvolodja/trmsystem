@@ -25,7 +25,7 @@ public class AdminCRUDUserController {
   public String listUsers(Model model) {
 
     model.addAttribute("user", new User());
-    model.addAttribute("listUsers", userService.getAll());
+    model.addAttribute("listUsers", this.userService.getAll());
     return "user/users";
 
   }
@@ -34,9 +34,9 @@ public class AdminCRUDUserController {
   public String addUser(@ModelAttribute("user") User user, Model model) {
 
     if (user != null) {
-      userService.save(user);
+      this.userService.save(user);
     }
-    model.addAttribute("listUsers", userService.getAll());
+    model.addAttribute("listUsers", this.userService.getAll());
     return "/user/users";
 
   }

@@ -57,7 +57,7 @@
     Add a User
 </h1>
 
-<form:form action="${addAction}" modelAttribute="user">
+<%--<form:form action="${addAction}" modelAttribute="user">
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
@@ -79,8 +79,7 @@
     <p></p>
     <input type="submit" value="ADD">
 
-</form:form>
-
+</form:form>--%>
 
 
 <br>
@@ -90,15 +89,25 @@
     <table class="tg">
         <tr>
                 <%-- 80+120*3+2*60 = 560 --%>
-            <th width="320">ID</th>
-            <th width="120">Name</th>
+            <th width="60">E-mail</th>
+            <th width="60">Usertype</th>
+            <th width="60">Username</th>
+            <th width="60">First_Name</th>
+            <th width="60">Last_Name</th>
+            <th width="60">Reg_Date</th>
+            <th width="60">Birth_Date</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
         <c:forEach items="${listUsers}" var="user">
             <tr>
-                <td>${user.id}</td>
-                <td>${user.name}</td>
+                <td>${user.email}</td>
+                <td>${user.userType}</td>
+                <td>${user.username}</td>
+                <td>${user.firstName}</td>
+                <td>${user.lastName}</td>
+                <td>${user.registrationDate}</td>
+                <td>${user.birthDate}</td>
                 <td><a href="<c:url value='/admin/user/edit/${user.id}'/>">Edit</a></td>
                 <td><a href="<c:url value='/admin/user/remove/${user.id}'/>">Delete</a></td>
             </tr>
