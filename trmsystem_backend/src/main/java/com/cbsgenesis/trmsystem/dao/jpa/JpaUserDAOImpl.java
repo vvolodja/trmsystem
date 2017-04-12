@@ -102,6 +102,9 @@ public class JpaUserDAOImpl implements UserDAO {
 
     @Override
     public void delete(User user) {
-        this.entityManager.remove(user);
+        /*Persist input user to current context*/
+        User userForDeleting = getById(user.getId());
+        this.entityManager.remove(userForDeleting);
+        logger.info("User successfully removed. User details: "+ user);
     }
 }

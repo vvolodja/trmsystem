@@ -75,15 +75,17 @@
 
         <tr>
             <td>
-                <form:label path="userType">
-                    <spring:message text="UserType"/>
-                </form:label>
-            </td>
-            <td>
-                <form:select path="userType">
-                    <form:option value="NONE" label="Select Role"/>
-                    <form:options items="${roles}" itemValue="id" itemLabel="username"/>
-                </form:select>
+                <spring:bind path="userType">
+                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                        <form:radiobutton path="userType" value="supervisor" onclick="EnableSubmit()"/>
+                        <spring:message code="signUp.value.supervisor"/>
+                    </div>
+                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                        <form:radiobutton path="userType" value="specialist" onclick="EnableSubmit()"/>
+                        <spring:message code="signUp.value.specialist"/>
+                    </div>
+                    <form:errors path="userType"/>
+                </spring:bind>
             </td>
         </tr>
 

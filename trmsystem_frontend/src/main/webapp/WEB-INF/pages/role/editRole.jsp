@@ -53,7 +53,7 @@
 </head>
 <body>
 <h1>
-    Add a Role
+    Edit a Role
 </h1>
 <c:url var="editAction" value="/admin/role/edit/${role.id}"/>
 

@@ -54,7 +54,7 @@
 </head>
 <body>
 <h1>
-    Add a User
+    Edit a User
 
 </h1>
 <c:url var="editAction" value="/admin/user/edit/${user.id}"/>
@@ -66,13 +66,66 @@
     <table>
         <tr>
             <td>
-                <form:label path="name">
-                    <spring:message text="Name"/>
+                <form:label path="email">
+                    <spring:message text="E-mail"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="name"/>
+                <form:input path="email"/>
             </td>
+        </tr>
+
+        <tr>
+            <td>
+                <spring:bind path="userType">
+                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                        <form:radiobutton path="userType" value="supervisor" onclick="EnableSubmit()"/>
+                        <spring:message code="signUp.value.supervisor"/>
+                    </div>
+                    <div class="form-group ${status.error ? 'has-error' : ''}">
+                        <form:radiobutton path="userType" value="specialist" onclick="EnableSubmit()"/>
+                        <spring:message code="signUp.value.specialist"/>
+                    </div>
+                    <form:errors path="userType"/>
+                </spring:bind>
+            </td>
+        </tr>
+
+        <tr>
+            <td>
+                <form:label path="username">
+                    <spring:message text="Username"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="username"/>
+            </td>
+        </tr>        <tr>
+        <td>
+            <form:label path="firstName">
+                <spring:message text="First Name"/>
+            </form:label>
+        </td>
+        <td>
+            <form:input path="firstName"/>
+        </td>
+    </tr>        <tr>
+        <td>
+            <form:label path="lastName">
+                <spring:message text="Last Name"/>
+            </form:label>
+        </td>
+        <td>
+            <form:input path="lastName"/>
+        </td>
+    </tr>
+        <tr>
+            <td>
+                <form:label path="password">
+                    <spring:message text="Password"/>
+                </form:label>
+            </td>
+            <td><form:input path="password"/></td>
         </tr>
     </table>
 
