@@ -56,7 +56,7 @@
 <h1>
     Add a User
 </h1>
-
+<c:url var="addAction" value="/admin/user/add"/>
 <form:form action="${addAction}" modelAttribute="user">
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
@@ -64,23 +64,30 @@
     <table>
         <tr>
             <td>
-                <form:label path="e-mail">
+                <form:label path="email">
                     <spring:message text="E-mail"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="e-mail"/>
+                <form:input path="email"/>
             </td>
-        </tr>        <tr>
+        </tr>
+
+        <tr>
             <td>
-                <form:label path="usertype">
-                    <spring:message text="Usertype"/>
+                <form:label path="userType">
+                    <spring:message text="UserType"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="usertype"/>
+                <form:select path="userType">
+                    <form:option value="NONE" label="Select Role"/>
+                    <form:options items="${roles}" itemValue="id" itemLabel="username"/>
+                </form:select>
             </td>
-        </tr>        <tr>
+        </tr>
+
+        <tr>
             <td>
                 <form:label path="username">
                     <spring:message text="Username"/>
@@ -91,49 +98,30 @@
             </td>
         </tr>        <tr>
             <td>
-                <form:label path="first_name">
-                    <spring:message text="First_Name"/>
+                <form:label path="firstName">
+                    <spring:message text="First Name"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="first_name"/>
+                <form:input path="firstName"/>
             </td>
         </tr>        <tr>
             <td>
-                <form:label path="e-mail">
-                    <spring:message text="E-mail"/>
+                <form:label path="lastName">
+                    <spring:message text="Last Name"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="e-mail"/>
+                <form:input path="lastName"/>
             </td>
-        </tr>        <tr>
+        </tr>
+        <tr>
             <td>
-                <form:label path="e-mail">
-                    <spring:message text="E-mail"/>
+                <form:label path="password">
+                    <spring:message text="Password"/>
                 </form:label>
             </td>
-            <td>
-                <form:input path="e-mail"/>
-            </td>
-        </tr>        <tr>
-            <td>
-                <form:label path="e-mail">
-                    <spring:message text="E-mail"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="e-mail"/>
-            </td>
-        </tr>        <tr>
-            <td>
-                <form:label path="e-mail">
-                    <spring:message text="E-mail"/>
-                </form:label>
-            </td>
-            <td>
-                <form:input path="e-mail"/>
-            </td>
+            <td><form:input path="password"/></td>
         </tr>
     </table>
 
@@ -147,17 +135,19 @@
 <br>
 <h1>User List</h1>
 
+<%--Show table with entities--%>
 <c:if test="${!empty listUsers}">
     <table class="tg">
         <tr>
                 <%-- 80+120*3+2*60 = 560 --%>
             <th width="60">E-mail</th>
-            <th width="60">Usertype</th>
+            <th width="60">UserType</th>
             <th width="60">Username</th>
-            <th width="60">First_Name</th>
-            <th width="60">Last_Name</th>
-            <th width="60">Reg_Date</th>
-            <th width="60">Birth_Date</th>
+            <th width="60">First Name</th>
+            <th width="60">Last Name</th>
+            <%--<th width="60">Registration Date</th>--%>
+            <th width="60">Birth Date</th>
+                    <th width="60">Password</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
@@ -168,8 +158,9 @@
                 <td>${user.username}</td>
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
-                <td>${user.registrationDate}</td>
+                <%--<td>${user.registrationDate}</td>--%>
                 <td>${user.birthDate}</td>
+                <td>${user.password}</td>
                 <td><a href="<c:url value='/admin/user/edit/${user.id}'/>">Edit</a></td>
                 <td><a href="<c:url value='/admin/user/remove/${user.id}'/>">Delete</a></td>
             </tr>

@@ -1,6 +1,7 @@
 package com.cbsgenesis.trmsystem.controller;
 
 import com.cbsgenesis.trmsystem.model.User;
+import com.cbsgenesis.trmsystem.service.RoleService;
 import com.cbsgenesis.trmsystem.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,9 @@ public class AdminCRUDUserController {
   @Autowired
   private UserService userService;
 
+  @Autowired
+  private RoleService roleService;
+
   @RequestMapping(value = "/admin/user/users", method = RequestMethod.GET)
   public String listUsers(Model model) {
 
@@ -36,6 +40,8 @@ public class AdminCRUDUserController {
     if (user != null) {
       this.userService.save(user);
     }
+
+    model.addAttribute("roles", this.roleService.getAll());
     model.addAttribute("listUsers", this.userService.getAll());
     return "/user/users";
 
