@@ -57,29 +57,91 @@
     Add a User
 </h1>
 
-<%--<form:form action="${addAction}" modelAttribute="user">
+<form:form action="${addAction}" modelAttribute="user">
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
     <table>
         <tr>
             <td>
-                <form:label path="name">
-                    <spring:message text="Name"/>
+                <form:label path="e-mail">
+                    <spring:message text="E-mail"/>
                 </form:label>
             </td>
             <td>
-                <form:input path="name"/>
+                <form:input path="e-mail"/>
+            </td>
+        </tr>        <tr>
+            <td>
+                <form:label path="usertype">
+                    <spring:message text="Usertype"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="usertype"/>
+            </td>
+        </tr>        <tr>
+            <td>
+                <form:label path="username">
+                    <spring:message text="Username"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="username"/>
+            </td>
+        </tr>        <tr>
+            <td>
+                <form:label path="first_name">
+                    <spring:message text="First_Name"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="first_name"/>
+            </td>
+        </tr>        <tr>
+            <td>
+                <form:label path="e-mail">
+                    <spring:message text="E-mail"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="e-mail"/>
+            </td>
+        </tr>        <tr>
+            <td>
+                <form:label path="e-mail">
+                    <spring:message text="E-mail"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="e-mail"/>
+            </td>
+        </tr>        <tr>
+            <td>
+                <form:label path="e-mail">
+                    <spring:message text="E-mail"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="e-mail"/>
+            </td>
+        </tr>        <tr>
+            <td>
+                <form:label path="e-mail">
+                    <spring:message text="E-mail"/>
+                </form:label>
+            </td>
+            <td>
+                <form:input path="e-mail"/>
             </td>
         </tr>
-
     </table>
 
     <div style="clear: both;"></div>
     <p></p>
     <input type="submit" value="ADD">
 
-</form:form>--%>
+</form:form>
 
 
 <br>
