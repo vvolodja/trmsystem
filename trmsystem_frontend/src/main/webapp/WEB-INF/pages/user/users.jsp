@@ -98,7 +98,8 @@
             <td>
                 <form:input path="username"/>
             </td>
-        </tr>        <tr>
+        </tr>
+        <tr>
             <td>
                 <form:label path="firstName">
                     <spring:message text="First Name"/>
@@ -107,7 +108,8 @@
             <td>
                 <form:input path="firstName"/>
             </td>
-        </tr>        <tr>
+        </tr>
+        <tr>
             <td>
                 <form:label path="lastName">
                     <spring:message text="Last Name"/>
@@ -124,6 +126,26 @@
                 </form:label>
             </td>
             <td><form:input path="password"/></td>
+        </tr>
+            <%--Trying to add Role setting--%>
+
+        <tr>
+            <td>
+                <form:label path="roles">
+                    <spring:message text="Role"/>
+                </form:label>
+            </td>
+            <td>
+                <select name="roles">
+                    <option>Select Role</option>
+                    <c:forEach items="${roles}" var="role">
+                        <option value=${role.id}>${role.name}
+                        </option>
+                    </c:forEach>
+                </select>
+
+
+            </td>
         </tr>
     </table>
 
@@ -147,9 +169,10 @@
             <th width="60">Username</th>
             <th width="60">First Name</th>
             <th width="60">Last Name</th>
-            <%--<th width="60">Registration Date</th>--%>
+                <%--<th width="60">Registration Date</th>--%>
             <th width="60">Birth Date</th>
-                    <th width="60">Password</th>
+            <th width="60">Role</th>
+            <th width="60">Password</th>
             <th width="60">Edit</th>
             <th width="60">Delete</th>
         </tr>
@@ -160,8 +183,9 @@
                 <td>${user.username}</td>
                 <td>${user.firstName}</td>
                 <td>${user.lastName}</td>
-                <%--<td>${user.registrationDate}</td>--%>
+                    <%--<td>${user.registrationDate}</td>--%>
                 <td>${user.birthDate}</td>
+                <td>${user.roles}</td>
                 <td>${user.password}</td>
                 <td><a href="<c:url value='/admin/user/edit/${user.id}'/>">Edit</a></td>
                 <td><a href="<c:url value='/admin/user/remove/${user.id}'/>">Delete</a></td>

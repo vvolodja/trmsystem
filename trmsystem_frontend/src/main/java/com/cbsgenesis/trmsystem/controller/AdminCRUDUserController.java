@@ -28,6 +28,7 @@ public class AdminCRUDUserController {
   @RequestMapping(value = "/admin/user/users", method = RequestMethod.GET)
   public String listUsers(Model model) {
 
+    model.addAttribute("roles", this.roleService.getAll());
     model.addAttribute("user", new User());
     model.addAttribute("listUsers", this.userService.getAll());
     return "user/users";
@@ -42,7 +43,7 @@ public class AdminCRUDUserController {
     }
 
     model.addAttribute("roles", this.roleService.getAll());
-    model.addAttribute("listUsers", this.userService.getAll());
+    model.addAttribute("listUsers", this.userService.getAll()); // needs after adding user
     return "/user/users";
 
   }
