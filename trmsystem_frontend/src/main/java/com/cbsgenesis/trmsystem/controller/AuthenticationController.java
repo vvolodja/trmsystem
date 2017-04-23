@@ -54,13 +54,6 @@ public class AuthenticationController {
 
         securityService.autoLogin(userForm.getUsername(), userForm.getConfirmPassword());
 
-        if (SecurityContextHolder
-                .getContext()
-                .getAuthentication()
-                .getAuthorities()
-                .contains("ROLE_ADMIN" )){
-            return "admin/welcome";
-        }
         return "user/home";
     }
 

@@ -18,12 +18,19 @@
     <button>VIEW TEAMS</button>
 </a>
 
+<a href="/admin/role/roles">
+    <button>VIEW ROLES</button>
+</a>
+
 <a href="/admin/admittances">
     <button>VIEW ADMITTANCES</button>
 </a>
 
 <a href="/admin/status">
     <button>VIEW STATUS</button>
+</a>
+<a href="/admin/user/users">
+    <button>VIEW USERS</button>
 </a>
 
 </body>
