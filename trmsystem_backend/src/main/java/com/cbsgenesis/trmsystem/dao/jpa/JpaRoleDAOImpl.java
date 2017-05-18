@@ -49,6 +49,7 @@ public class JpaRoleDAOImpl implements RoleDAO {
       Role role = (Role) query.getSingleResult();
       return role;
     } catch (NoResultException e) {
+      logger.info("NoResultException: " + e);
       return null;
     }
   }
