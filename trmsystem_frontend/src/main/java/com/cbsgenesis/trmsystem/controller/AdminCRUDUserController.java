@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.UUID;
 
 /**
@@ -36,8 +37,9 @@ public class AdminCRUDUserController {
   }
 
   @RequestMapping(value = "/admin/user/add", method = RequestMethod.POST)
-  public String addUser(@ModelAttribute("user") User user, Model model) {
+  public String addUser(@ModelAttribute("user") User user, Model model, HttpServletRequest request) {
 
+    String role_id = request.getParameter("role_id");
     if (user != null) {
       this.userService.save(user);
     }
