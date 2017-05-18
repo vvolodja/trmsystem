@@ -23,10 +23,9 @@
     </appender>
     <!--Также мы устанавливаем root level для logger. Основыне уровни INFO (полезная информация),
     WARNING(неожиданное, но некритическое), ERROR(Ошибка программы или потока, или 404 пользователю),DEBUG(с камментами)-->
-    <root level="INFO">
+    <root level="DEBUG">
         <appender-ref ref="console"/>
         <appender-ref ref="file"/>
     </root>
 
-    <logger name="org.hibernate.SQL" level = "DEBUG"/>
 </configuration>

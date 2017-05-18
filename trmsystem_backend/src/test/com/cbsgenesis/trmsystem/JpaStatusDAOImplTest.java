@@ -5,8 +5,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.stubVoid;
+import static org.mockito.Mockito.when;
 
 import com.cbsgenesis.trmsystem.dao.jpa.JpaStatusDAOImpl;
 import com.cbsgenesis.trmsystem.model.Status;
@@ -34,25 +36,25 @@ public class JpaStatusDAOImplTest {
 
     @Test
     public void saveStatus() throws Exception {
-        stabVoid(jpaStatusDAO).toReturn().on().save(status);
+        stubVoid(jpaStatusDAO).toReturn().on().save(status);
         jpaStatusDAO.save(status);
     }
 
     @Test
     public void getByIdStatus() throws Exception {
         when(jpaStatusDAO.getById(id)).thenReturn(status);
-        assertEquals(jpaStatusDAO.getById(id), status)
+        assertEquals(jpaStatusDAO.getById(id), status);
     }
 
     @Test
     public void getAllStatus() throws Exception {
         when(jpaStatusDAO.getAll()).thenReturn(statusList);
-        assertEquals(jpaStatusDAO.getAll(), statusList)
+        assertEquals(jpaStatusDAO.getAll(), statusList);
     }
 
     @Test
-    public void saveStatus() throws Exception {
-        stabVoid(jpaStatusDAO).toReturn().on().delete(status);
+    public void deleteStatus() throws Exception {
+        stubVoid(jpaStatusDAO).toReturn().on().delete(status);
         jpaStatusDAO.delete(status);
     }
 
