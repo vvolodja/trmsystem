@@ -52,6 +52,7 @@ public class JpaUserDAOImpl implements UserDAO {
             User user = (User) query.getSingleResult();
             return user;
         } catch (NoResultException e) {
+            logger.info("User findByName(String username) NoResultException: " + e);
             return null;
         }
     }
