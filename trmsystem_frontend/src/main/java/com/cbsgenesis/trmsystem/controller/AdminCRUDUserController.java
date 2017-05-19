@@ -37,9 +37,8 @@ public class AdminCRUDUserController {
   }
 
   @RequestMapping(value = "/admin/user/add", method = RequestMethod.POST)
-  public String addUser(@ModelAttribute("user") User user, Model model, HttpServletRequest request) {
+  public String addUser(@ModelAttribute("user") User user, Model model) {
 
-    String role_id = request.getParameter("role_id");
     if (user != null) {
       this.userService.save(user);
     }

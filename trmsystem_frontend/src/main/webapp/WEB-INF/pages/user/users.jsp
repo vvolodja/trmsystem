@@ -129,7 +129,7 @@
         </tr>
             <%--Trying to add Role setting--%>
 
-        <tr>
+<%--        <tr>
             <td>
                 <form:label path="roles">
                     <spring:message text="Role"/>
@@ -143,10 +143,8 @@
                         </option>
                     </c:forEach>
                 </select>
-
-
             </td>
-        </tr>
+        </tr>--%>
     </table>
 
     <div style="clear: both;"></div>
