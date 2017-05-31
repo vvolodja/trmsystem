@@ -55,7 +55,7 @@
 <h1>
     Add a Role
 </h1>
-
+<c:url var="addAction" value="/admin/role/add"></c:url>
 <form:form action="${addAction}" modelAttribute="role">
 
     <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

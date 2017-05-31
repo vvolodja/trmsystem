@@ -44,7 +44,7 @@
 <br>
 <div class="admin-panel">
     <sec:authorize access="hasRole('ROLE_ADMIN')">
-        <a href="/admin/roles">
+        <a href="/admin/role/roles">
             <button>adminCRUDForRoles</button>
         </a>
     </sec:authorize>
