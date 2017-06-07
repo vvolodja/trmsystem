@@ -1,6 +1,4 @@
-# trmsystem
-
-TRMSystem
+# TRMSystem
 
 This is Team Resource Management System project that designed to help companies to distribute their specialists between work positions.
 HOW TO START
